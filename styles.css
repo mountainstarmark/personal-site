@@ -216,6 +216,48 @@ a:hover {
     color: var(--ink);
 }
 
+/* ── Book Grid ── */
+.book-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    width: 140px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: opacity 0.2s;
+}
+
+.book-card:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.book-cover {
+    width: 140px;
+    height: 210px;
+    object-fit: cover;
+    border: 1px solid var(--rule-light);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px;
+}
+
+.book-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.book-author {
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    font-style: italic;
+}
+
 /* ── Sidebar ── */
 .sidebar-box {
     margin-bottom: 28px;
