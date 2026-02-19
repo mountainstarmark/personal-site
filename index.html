@@ -153,29 +153,53 @@
                     <p class="lead-subtitle">Books that have shaped how I think about business, investing, and life</p>
                     <div class="lead-rule"></div>
                     <div class="book-grid">
-                        <a href="https://www.amazon.com/Outsiders-Unconventional-Radically-Rational-Blueprint/dp/1422162672" target="_blank" rel="noopener noreferrer" class="book-card">
+                        <a href="https://www.amazon.com/Outsiders-Unconventional-Radically-Rational-Blueprint/dp/1422162672" target="_blank" rel="noopener noreferrer" class="book-card" data-title="The Outsiders" data-author="William N. Thorndike" data-topic="Capital Allocation &amp; CEO Leadership">
                             <img src="images/outsiders.jpg" alt="The Outsiders by William N. Thorndike" class="book-cover">
                             <p class="book-title">The Outsiders</p>
                             <p class="book-author">William N. Thorndike</p>
                         </a>
                     </div>
                 </div>
-                <aside class="lead-sidebar">
+                <aside class="lead-sidebar" id="book-details">
                     <div class="sidebar-box">
                         <h4 class="sidebar-heading">Book Details</h4>
                         <div class="sidebar-rule"></div>
                         <dl class="sidebar-facts">
                             <dt>Title</dt>
-                            <dd>The Outsiders</dd>
+                            <dd id="book-detail-title">Hover over a book</dd>
                             <dt>Author</dt>
-                            <dd>William N. Thorndike</dd>
+                            <dd id="book-detail-author">&mdash;</dd>
                             <dt>Topic</dt>
-                            <dd>Capital Allocation &amp; CEO Leadership</dd>
+                            <dd id="book-detail-topic">&mdash;</dd>
                         </dl>
                     </div>
                 </aside>
             </article>
         </section>
+
+        <script>
+            (function() {
+                var cards = document.querySelectorAll('.book-card');
+                var titleEl = document.getElementById('book-detail-title');
+                var authorEl = document.getElementById('book-detail-author');
+                var topicEl = document.getElementById('book-detail-topic');
+                var defaultTitle = 'Hover over a book';
+                var defaultDash = '\u2014';
+
+                cards.forEach(function(card) {
+                    card.addEventListener('mouseenter', function() {
+                        titleEl.textContent = card.dataset.title;
+                        authorEl.textContent = card.dataset.author;
+                        topicEl.textContent = card.dataset.topic;
+                    });
+                    card.addEventListener('mouseleave', function() {
+                        titleEl.textContent = defaultTitle;
+                        authorEl.textContent = defaultDash;
+                        topicEl.textContent = defaultDash;
+                    });
+                });
+            })();
+        </script>
 
         <section id="opinion" class="story-section">
             <div class="section-rule-heavy"></div>
