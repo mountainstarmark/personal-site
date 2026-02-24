@@ -12,7 +12,15 @@
 
         <!-- Top Bar -->
         <div class="topbar">
-            <span class="topbar-date">Wednesday, February 19, 2026</span>
+            <span class="topbar-date" id="topbar-date"></span>
+            <script>
+                (function() {
+                    var d = new Date();
+                    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+                    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                    document.getElementById('topbar-date').textContent = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+                })();
+            </script>
             <div class="topbar-links">
                 <a href="https://www.linkedin.com/in/markvukich/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://x.com/MarkVukich" target="_blank" rel="noopener noreferrer">@MarkVukich</a>
@@ -158,12 +166,12 @@
                             <p class="book-title">The Outsiders</p>
                             <p class="book-author">William N. Thorndike</p>
                         </a>
-                        <a href="https://www.amazon.com/Theres-Always-Something-Do-Entrepreneurial/dp/0773545638" target="_blank" rel="noopener noreferrer" class="book-card" data-title="There's Always Something to Do" data-author="Christopher Risso-Gill" data-topic="Value Investing &amp; Entrepreneurship">
+                        <a href="https://www.amazon.com/Theres-Always-Something-Do-Investment/dp/0773538631" target="_blank" rel="noopener noreferrer" class="book-card" data-title="There's Always Something to Do" data-author="Christopher Risso-Gill" data-topic="Value Investing &amp; Entrepreneurship">
                             <img src="images/AlwaysSomethingToDo.jpg" alt="There's Always Something to Do by Christopher Risso-Gill" class="book-cover">
                             <p class="book-title">There's Always Something to Do</p>
                             <p class="book-author">Christopher Risso-Gill</p>
                         </a>
-                        <a href="https://www.amazon.com/American-Steel-Workers-Resurrection-Rust/dp/0671758985" target="_blank" rel="noopener noreferrer" class="book-card" data-title="American Steel" data-author="Richard Preston" data-topic="American Industry &amp; Manufacturing">
+                        <a href="https://www.amazon.com/American-Steel-Metal-Resurrection-Rust/dp/013029604X" target="_blank" rel="noopener noreferrer" class="book-card" data-title="American Steel" data-author="Richard Preston" data-topic="American Industry &amp; Manufacturing">
                             <img src="images/AmericanSteelUpdated.jpg" alt="American Steel by Richard Preston" class="book-cover">
                             <p class="book-title">American Steel</p>
                             <p class="book-author">Richard Preston</p>
