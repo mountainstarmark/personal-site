@@ -43,25 +43,6 @@
 }
 /* Nameplate period flourish */
 [data-theme="street"] .masthead-name::after { content: "."; }
-/* Market-data strip in place of the heavy nav rule */
-[data-theme="street"] .nav-rule {
-    height: auto;
-    background: none;
-    border-top: 2px solid var(--ink);
-    border-bottom: 1px solid var(--ink);
-}
-[data-theme="street"] .nav-rule::before {
-    content: "DJIA 50245.75 ▼1.26%   •   NASDAQ 25809.66 ▲2.50%   •   S&P 500 6388.12 ▲0.84%   •   10-YR TREAS 4.46%   •   OIL $27.71   •   GOLD $4,090.30   •   €/$ 1.1521   •   ¥ 159.96";
-    display: block;
-    text-align: center;
-    color: var(--ink);
-    font: 400 0.66rem/1 var(--serif);
-    letter-spacing: 0.3px;
-    padding: 5px 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 /* Boxed news rail: italic display heading + diamond bullets */
 [data-theme="street"] .lead-sidebar .sidebar-box:first-child {
     border: 1px solid var(--rule-light);
@@ -275,22 +256,6 @@
 [data-theme="ticker"] .section-nav-link.active {
     background: var(--accent);
     color: #ffffff;
-}
-/* Black ticker strip that continues the section bar */
-[data-theme="ticker"] .nav-rule {
-    height: auto;
-    background: var(--ink);
-}
-[data-theme="ticker"] .nav-rule::before {
-    content: "MARKETS  •  S&P ▲0.62%  •  NASDAQ ▲0.91%  •  DOW ▲0.34%  •  10Y 4.21%  •  WTI $71.40  •  GOLD $2,412  •  BTC ▲2.10%";
-    display: block;
-    color: #ffffff;
-    font: 600 0.64rem/1 var(--font-label);
-    letter-spacing: 0.4px;
-    padding: 7px 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 @media (min-width: 769px) {
     [data-theme="ticker"] .lead-sidebar {
