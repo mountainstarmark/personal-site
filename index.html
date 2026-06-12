@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="street">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mark Vukich | Co-Founder &amp; Co-CEO, Bridgeway Holdings</title>
     <meta name="description" content="Mark Vukich - Co-Founder and Co-CEO of Bridgeway Holdings. Investment banking and private equity professional.">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="themes.css">
 </head>
 <body>
     <div class="page">
@@ -31,6 +32,20 @@
         <header class="masthead">
             <div class="masthead-rule"></div>
             <h1 class="masthead-name">Mark Vukich</h1>
+            <div class="masthead-folio">
+                <span class="folio-vol">Vol. I &middot; No. 1</span>
+                <span class="folio-sep">&middot;</span>
+                <span class="folio-label">Edition:</span>
+                <details class="edition" id="edition-switch">
+                    <summary class="edition-summary" aria-label="Choose edition" aria-haspopup="menu"><span class="edition-name" id="edition-name">The Street</span> <span class="edition-caret" aria-hidden="true">&#9662;</span></summary>
+                    <ul class="edition-menu" role="menu" aria-label="Choose edition">
+                        <li><button type="button" role="menuitem" data-theme-key="street">The Street</button></li>
+                        <li><button type="button" role="menuitem" data-theme-key="financier">The Financier</button></li>
+                        <li><button type="button" role="menuitem" data-theme-key="gotham">Gotham</button></li>
+                        <li><button type="button" role="menuitem" data-theme-key="ticker">The Ticker</button></li>
+                    </ul>
+                </details>
+            </div>
             <div class="masthead-rule"></div>
         </header>
 
@@ -262,5 +277,34 @@
         </footer>
 
     </div>
+
+    <!-- Edition switcher: in-memory only, no persistence (every visit defaults to The Street) -->
+    <script>
+        (function() {
+            var sw = document.getElementById('edition-switch');
+            var nameEl = document.getElementById('edition-name');
+            var names = {
+                street: 'The Street',
+                financier: 'The Financier',
+                gotham: 'Gotham',
+                ticker: 'The Ticker'
+            };
+            sw.querySelectorAll('[data-theme-key]').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var key = btn.getAttribute('data-theme-key');
+                    document.documentElement.setAttribute('data-theme', key);
+                    nameEl.textContent = names[key];
+                    sw.removeAttribute('open');
+                });
+            });
+            // Dismiss the menu on outside click or Escape.
+            document.addEventListener('click', function(e) {
+                if (sw.open && !sw.contains(e.target)) sw.removeAttribute('open');
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') sw.removeAttribute('open');
+            });
+        })();
+    </script>
 </body>
 </html>

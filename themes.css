@@ -1,0 +1,300 @@
+/* ============================================================
+   themes.css — self-hosted fonts + per-edition theme overrides
+   ------------------------------------------------------------
+   Each edition overrides the token contract defined in styles.css
+   (:root = the default "Street" edition, which uses the system
+   serif stack and downloads NO web fonts). The faces below are
+   only fetched when their edition is selected. All faces are
+   open-source (SIL OFL) — they evoke a house style, not copy it.
+   ============================================================ */
+
+/* ── @font-face (self-hosted, latin subset) ── */
+@font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/sourceserif-400.woff2') format('woff2'); }
+@font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/sourceserif-700.woff2') format('woff2'); }
+
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/inter-400.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/inter-600.woff2') format('woff2'); }
+
+@font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/playfair-700.woff2') format('woff2'); }
+
+@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/bodoni-700.woff2') format('woff2'); }
+
+@font-face { font-family: 'Libre Caslon Text'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/caslon-400.woff2') format('woff2'); }
+@font-face { font-family: 'Libre Caslon Text'; font-style: italic; font-weight: 400; font-display: swap; src: url('fonts/caslon-400i.woff2') format('woff2'); }
+@font-face { font-family: 'Libre Caslon Text'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/caslon-700.woff2') format('woff2'); }
+
+
+/* ============================================================
+   THE STREET (default) — serif financial broadsheet: a narrow
+   multi-column front with hairline column rules, a market-data
+   strip, and a boxed news rail. Tokens not set here fall back to
+   the :root defaults (system serif, no web fonts).
+   ============================================================ */
+[data-theme="street"] {
+    --body-columns: 2;
+    --body-column-gap: 26px;
+    --body-column-rule: 1px solid var(--rule-light);
+    --body-size: 0.9rem;
+    --headline-size: 2.25rem;
+    --headline-weight: 700;
+    --masthead-size: 4rem;
+    --masthead-tracking: 1px;
+    --max-width: 1080px;
+}
+/* Nameplate period flourish */
+[data-theme="street"] .masthead-name::after { content: "."; }
+/* Market-data strip in place of the heavy nav rule */
+[data-theme="street"] .nav-rule {
+    height: auto;
+    background: none;
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+}
+[data-theme="street"] .nav-rule::before {
+    content: "DJIA 50245.75 ▼1.26%   •   NASDAQ 25809.66 ▲2.50%   •   S&P 500 6388.12 ▲0.84%   •   10-YR TREAS 4.46%   •   OIL $27.71   •   GOLD $4,090.30   •   €/$ 1.1521   •   ¥ 159.96";
+    display: block;
+    text-align: center;
+    color: var(--ink);
+    font: 400 0.66rem/1 var(--serif);
+    letter-spacing: 0.3px;
+    padding: 5px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Boxed news rail: italic display heading + diamond bullets */
+[data-theme="street"] .lead-sidebar .sidebar-box:first-child {
+    border: 1px solid var(--rule-light);
+    border-top: 3px solid var(--ink);
+    padding: 14px 16px;
+    background: rgba(0, 0, 0, 0.018);
+}
+[data-theme="street"] .lead-sidebar .sidebar-box:first-child .sidebar-heading {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 1.5rem;
+    letter-spacing: 0;
+    text-align: center;
+}
+[data-theme="street"] .lead-sidebar .sidebar-box:first-child .sidebar-rule {
+    width: 44px;
+    height: 1px;
+    margin: 6px auto 14px;
+}
+[data-theme="street"] .lead-sidebar .sidebar-box:first-child .sidebar-facts dt::before {
+    content: "◆ ";
+    font-size: 0.62em;
+    vertical-align: middle;
+}
+
+
+/* ============================================================
+   THE FINANCIER — pink-stock financial broadsheet: high-contrast
+   Didone nameplate over a humanist sans, two-column measure with
+   fine rules, claret-headed "briefing" boxes, teal + red accents.
+   ============================================================ */
+[data-theme="financier"] {
+    --font-masthead: 'Playfair Display', Georgia, serif;  /* high-contrast Didone nameplate */
+    --font-headline: 'Playfair Display', Georgia, serif;
+    --font-body: 'Source Serif 4', Georgia, serif;
+    --font-label: 'Inter', system-ui, sans-serif;
+
+    --bg: #fff1e5;              /* salmon stock */
+    --ink: #33302e;
+    --ink-light: #6b6258;
+    --ink-faint: #a99c8c;
+    --accent: #0d7680;          /* teal */
+    --kicker-color: #cc0000;    /* red section label */
+    --rule: #33302e;
+    --rule-light: #e7d8c4;
+
+    --masthead-size: 4rem;
+    --masthead-weight: 700;
+    --masthead-tracking: 1px;
+
+    --headline-size: 2.15rem;
+    --headline-weight: 700;
+    --headline-tracking: -0.2px;
+    --body-size: 0.98rem;
+    --body-line: 1.6;
+
+    --max-width: 1080px;
+    --lead-main-flex: 2.2;
+    --lead-sidebar-flex: 0.78;
+
+    --body-columns: 2;
+    --body-column-gap: 28px;
+    --body-column-rule: 1px solid var(--rule-light);
+}
+[data-theme="financier"] .lead-subtitle { font-style: italic; color: var(--ink-light); }
+[data-theme="financier"] .section-rule-heavy { height: 1px; background: var(--rule); }
+/* Boxed rail with claret header bars */
+[data-theme="financier"] .sidebar-box { border: 1px solid var(--rule-light); }
+[data-theme="financier"] .sidebar-heading {
+    background: #990f3d;        /* claret */
+    color: #ffffff;
+    padding: 6px 10px;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+}
+[data-theme="financier"] .sidebar-rule { display: none; }
+[data-theme="financier"] .sidebar-facts,
+[data-theme="financier"] .sidebar-links { padding: 10px 12px; }
+
+
+/* ============================================================
+   GOTHAM — elegant city magazine: dramatic high-contrast titling,
+   a single airy column, Caslon body, refined double rules and
+   centered department kickers.
+   ============================================================ */
+[data-theme="gotham"] {
+    --font-masthead: 'Bodoni Moda', 'Playfair Display', Georgia, serif;  /* dramatic high-contrast titling */
+    --font-headline: 'Playfair Display', Georgia, serif;
+    --font-body: 'Libre Caslon Text', Georgia, serif;
+    --font-label: 'Libre Caslon Text', Georgia, serif;
+
+    --bg: #fffefb;
+    --ink: #1a1a1a;
+    --ink-light: #4a4a4a;
+    --ink-faint: #8a8a8a;
+    --accent: #c1121f;          /* red accent */
+    --kicker-color: #1a1a1a;
+    --rule: #1a1a1a;
+    --rule-light: #d8d8d8;
+
+    --masthead-size: 4rem;
+    --masthead-weight: 700;
+    --masthead-transform: none;
+    --masthead-tracking: -0.5px;
+
+    --headline-size: 2.4rem;
+    --headline-weight: 700;
+    --headline-transform: none;
+    --headline-tracking: -0.3px;
+    --subtitle-style: italic;
+    --body-size: 1.02rem;
+    --body-line: 1.8;
+    --body-justify: left;
+    --body-hyphens: manual;
+    --dropcap-weight: 400;
+
+    --rule-mast-h: 1px;
+    --rule-nav-h: 1px;
+    --rule-heavy-h: 1px;
+
+    --max-width: 760px;
+    --content-top: 44px;
+}
+/* Single-column bespoke layout: facts reflow beneath the article */
+[data-theme="gotham"] .lead-story { display: block; }
+[data-theme="gotham"] .lead-story-main { border-right: none; padding-right: 0; }
+[data-theme="gotham"] .lead-sidebar {
+    flex: none;
+    padding-left: 0;
+    padding-top: 28px;
+    margin-top: 28px;
+    border-top: 1px solid var(--rule-light);
+}
+[data-theme="gotham"] .section-nav-link { letter-spacing: 1.5px; }
+[data-theme="gotham"] .story-section { margin-top: 56px; }
+[data-theme="gotham"] .section-rule-heavy {
+    height: 0;
+    background: none;
+    border-top: 3px double var(--ink);
+    margin-bottom: 24px;
+}
+[data-theme="gotham"] .kicker { text-align: center; letter-spacing: 3px; }
+[data-theme="gotham"] .lead-body p { margin-bottom: 18px; }
+
+
+/* ============================================================
+   THE TICKER — markets wire: a serif logotype + serif headlines
+   over a humanist sans, a black section bar that flows into a live
+   ticker strip, a dense three-column grid, and red news accents.
+   ============================================================ */
+[data-theme="ticker"] {
+    --font-masthead: 'Source Serif 4', Georgia, serif;
+    --font-headline: 'Source Serif 4', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-label: 'Inter', system-ui, sans-serif;
+
+    --bg: #ffffff;
+    --ink: #0d0d0d;
+    --ink-light: #3a3a3a;
+    --ink-faint: #767676;
+    --accent: #c8102e;          /* news red */
+    --kicker-color: #c8102e;
+    --rule: #0d0d0d;
+    --rule-light: #dcdcdc;
+
+    --masthead-size: 2.7rem;
+    --masthead-weight: 700;
+    --masthead-transform: none;
+    --masthead-tracking: -0.5px;
+
+    --headline-size: 1.95rem;
+    --headline-weight: 700;
+    --headline-tracking: -0.3px;
+    --subtitle-style: normal;
+    --body-size: 0.82rem;
+    --body-line: 1.55;
+    --body-justify: left;
+    --body-hyphens: manual;
+    --dropcap-display: none;
+
+    --rule-mast-h: 2px;
+    --rule-heavy-h: 2px;
+
+    --max-width: 1100px;
+    --cover-filter: none;
+
+    --body-columns: 3;
+    --body-column-gap: 16px;
+    --body-column-rule: 1px solid var(--rule-light);
+}
+/* Left-aligned serif logotype + a black section bar with red active state */
+[data-theme="ticker"] .masthead { text-align: left; }
+[data-theme="ticker"] .masthead-folio { justify-content: flex-start; }
+[data-theme="ticker"] .lead-subtitle { font-family: var(--font-label); font-weight: 600; }
+[data-theme="ticker"] .book-grid { gap: 16px; }
+[data-theme="ticker"] .book-card { width: 124px; }
+[data-theme="ticker"] .book-cover { width: 124px; height: 186px; }
+[data-theme="ticker"] .section-nav {
+    background: var(--ink);
+    border-top: none;
+    border-bottom: none;
+    justify-content: flex-start;
+}
+[data-theme="ticker"] .section-nav-link {
+    color: #ffffff;
+    border-right: 1px solid rgba(255, 255, 255, 0.18);
+}
+[data-theme="ticker"] .section-nav-link:hover,
+[data-theme="ticker"] .section-nav-link.active {
+    background: var(--accent);
+    color: #ffffff;
+}
+/* Black ticker strip that continues the section bar */
+[data-theme="ticker"] .nav-rule {
+    height: auto;
+    background: var(--ink);
+}
+[data-theme="ticker"] .nav-rule::before {
+    content: "MARKETS  •  S&P ▲0.62%  •  NASDAQ ▲0.91%  •  DOW ▲0.34%  •  10Y 4.21%  •  WTI $71.40  •  GOLD $2,412  •  BTC ▲2.10%";
+    display: block;
+    color: #ffffff;
+    font: 600 0.64rem/1 var(--font-label);
+    letter-spacing: 0.4px;
+    padding: 7px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@media (min-width: 769px) {
+    [data-theme="ticker"] .lead-sidebar {
+        border-left: 2px solid var(--ink);
+        padding-left: 20px;
+    }
+}
