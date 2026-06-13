@@ -223,7 +223,6 @@
     --body-line: 1.55;
     --body-justify: left;
     --body-hyphens: manual;
-    --dropcap-display: none;
 
     --rule-mast-h: 2px;
     --rule-heavy-h: 2px;
@@ -239,6 +238,15 @@
 [data-theme="ticker"] .masthead { text-align: left; }
 [data-theme="ticker"] .masthead-folio { justify-content: flex-start; }
 [data-theme="ticker"] .lead-subtitle { font-family: var(--font-label); font-weight: 600; }
+/* No decorative drop cap in the wire style, but keep the initial letter:
+   display:none on .drop-cap would otherwise swallow the article's first character. */
+[data-theme="ticker"] .drop-cap {
+    display: inline;
+    float: none;
+    font: inherit;
+    color: inherit;
+    padding: 0;
+}
 [data-theme="ticker"] .book-grid { gap: 16px; }
 [data-theme="ticker"] .book-card { width: 124px; }
 [data-theme="ticker"] .book-cover { width: 124px; height: 186px; }
