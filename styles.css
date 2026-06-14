@@ -848,3 +848,28 @@ a:hover {
     line-height: 1.45;
     color: var(--ink-light);
 }
+
+/* New Yorker–style single-panel cartoon.
+   Lives inside the Gotham essay, so it renders only in that edition.
+   Caption is baked into the image; centered as a magazine inset. */
+.cartoon {
+    margin: 34px auto;
+    max-width: 460px;
+    text-align: center;
+}
+.cartoon img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+/* Optional separate caption styling (unused while caption is baked in,
+   kept so a text <figcaption> would inherit the right house style). */
+.cartoon figcaption {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--ink-light);
+    margin-top: 12px;
+}
